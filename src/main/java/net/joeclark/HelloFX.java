@@ -1,8 +1,11 @@
 package net.joeclark;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -12,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import jdk.jshell.EvalException;
 
 public class HelloFX extends Application {
 
@@ -28,21 +32,29 @@ public class HelloFX extends Application {
         stage.setHeight(500);
 
         VBox root = new VBox();
-        ImageView imageView = new ImageView("https://static01.nyt.com/images/2017/02/24/opinion/00libertyWeb/00libertyWeb-jumbo.jpg?quality=90&auto=webp");
-        imageView.setPreserveRatio(true);
-        imageView.setFitWidth(200);
 
-        Label label1 = new Label("This is a text label");
-        label1.setTextFill(Color.web("#9042f5"));
-        label1.setFont(new Font("Cambria",24));
+        Hyperlink link = new Hyperlink("click me");
+//        link.setOnAction(e -> {
+//            System.out.println("The link was clicked!");
+//        });
+        link.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("You clicked the link.");
+            }
+        });
 
-        root.getChildren().addAll(imageView,label1);
+        Label text = new Label("Link not touched.");
+        Hyperlink link2 = new Hyperlink("smack me");
+        link2.setOnAction(e -> {
+            text.setText("Link has been touched...");
+        });
+
+        root.getChildren().addAll(link,text,link2);
+
 
 
         Scene myScene = new Scene(root);
-
-
-
         stage.setScene(myScene);
         stage.show();
 
