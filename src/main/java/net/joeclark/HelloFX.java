@@ -33,6 +33,7 @@ public class HelloFX extends Application {
 
         VBox root = new VBox();
 
+
         Hyperlink link = new Hyperlink("click me");
 //        link.setOnAction(e -> {
 //            System.out.println("The link was clicked!");
@@ -55,6 +56,7 @@ public class HelloFX extends Application {
 
 
         Scene myScene = new Scene(root);
+        myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);
         stage.show();
 
