@@ -3,10 +3,13 @@ package net.joeclark;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -26,29 +29,25 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 10 - Toggle and Radio Buttons");
+        stage.setTitle("Episode 11 - HBox and VBox");
         stage.setWidth(400);
         stage.setHeight(500);
 
-        VBox root = new VBox();
+        HBox root = new HBox();
 
-        ToggleButton button1 = new ToggleButton("Blue");
-        ToggleButton button2 = new ToggleButton("Red");
-        ToggleButton button3 = new ToggleButton("Yellow");
-        ToggleGroup toggleGroup = new ToggleGroup();
-        button1.setToggleGroup(toggleGroup);
-        button2.setToggleGroup(toggleGroup);
-        button3.setToggleGroup(toggleGroup);
+        Button b1 = new Button("One");
+        Button b2 = new Button("Two");
+        Button b3 = new Button("Three");
+        Button b4 = new Button("Four");
 
-        RadioButton r1 = new RadioButton("Black");
-        RadioButton r2 = new RadioButton("White");
-        RadioButton r3 = new RadioButton("Gray");
-        r1.setToggleGroup(toggleGroup);
-        r2.setToggleGroup(toggleGroup);
-        r3.setToggleGroup(toggleGroup);
+        root.setSpacing(10D); // spacing between buttons
+        root.setAlignment(Pos.BASELINE_LEFT); // where children are positioned relative to the HBox
+        root.setPadding(new Insets(10,10,10,10)); // top, right, bottom, left
+
+        HBox.setMargin(b2,new Insets(10,10,10,10)); // strange: static method of HBox sets margin for specified node
 
 
-        root.getChildren().addAll(button1,button2,button3,r1,r2,r3);
+        root.getChildren().addAll(b1,b2,b3,b4);
         Scene myScene = new Scene(root);
         myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);
