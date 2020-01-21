@@ -3,16 +3,14 @@ package net.joeclark;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -30,17 +28,38 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 13 - StackPanes");
-        stage.setWidth(500);
-        stage.setHeight(500);
+        stage.setTitle("Episode 14 - GridPanes w/ TextField and PasswordField");
+        //stage.setWidth(500);
+        //stage.setHeight(500);
 
-        Label l1 = new Label("We hold these truths");
-        Label l2 = new Label("to be self-evident:");
+        Label usernameLabel = new Label("Username:");
+        Label emailLabel = new Label("Email:");
+        Label passwordLabel = new Label("Password:");
 
-        StackPane root = new StackPane(l1,l2); // stacks them in the z-dimension
+        TextField usernameField = new TextField();
+        TextField emailField = new TextField();
+        PasswordField passwordField = new PasswordField();
 
-        StackPane.setAlignment(l1,Pos.TOP_CENTER); // l1.setAlignment doesn't have this effect; you have to use StackPane.setAlignment to have effect within the STackPane
+        Button finishButton = new Button("Create account");
 
+        GridPane root = new GridPane(); // like a table
+
+        root.add(usernameLabel,0,0); // column, row
+        root.add(emailLabel,0,1);
+        root.add(passwordLabel,0,2);
+
+        root.add(usernameField,1,0);
+        root.add(emailField,1,1);
+        root.add(passwordField,1,2);
+
+        // button spans two columns and is centered
+        root.add(finishButton,0,3,2,1); // column, row, colspan, rowspan
+        GridPane.setHalignment(finishButton, HPos.CENTER);
+
+        // customize the gridpane
+        root.setVgap(10); // vertical space between rows
+        root.setHgap(10); // horizontal space between columns
+        root.setPadding(new Insets(50)); // just one value -> sets padding for all 4 sides
 
         Scene myScene = new Scene(root);
         stage.setScene(myScene);
