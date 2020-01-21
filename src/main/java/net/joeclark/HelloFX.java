@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -27,34 +28,23 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 5 - Controls"); // controls is a funny name for images, buttons, etc
+        stage.setTitle("Episode 8 - Buttons");
         stage.setWidth(400);
         stage.setHeight(500);
 
         VBox root = new VBox();
 
+        Button button1 = new Button("_Click Me");
+        button1.setMinSize(50,50);
+        button1.setPrefSize(100,100);
 
-        Hyperlink link = new Hyperlink("click me");
-//        link.setOnAction(e -> {
-//            System.out.println("The link was clicked!");
-//        });
-        link.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("You clicked the link.");
-            }
+        //mnemonic (shortcut buttons)
+        button1.setMnemonicParsing(true);
+        button1.setOnAction(e -> {
+            System.out.println("Button was pressed. (or was it...?)");
         });
 
-        Label text = new Label("Link not touched.");
-        Hyperlink link2 = new Hyperlink("smack me");
-        link2.setOnAction(e -> {
-            text.setText("Link has been touched...");
-        });
-
-        root.getChildren().addAll(link,text,link2);
-
-
-
+        root.getChildren().addAll(button1);
         Scene myScene = new Scene(root);
         myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);

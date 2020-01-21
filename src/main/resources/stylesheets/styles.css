@@ -1,14 +1,4 @@
 .root {
     -fx-background-color: lightblue;
-}
-.label {
-    -fx-text-fill: red;
-    -fx-font-size: 24pt;
-}
-.hyperlink {
-    -fx-font-size: 18pt;
-}
-.hyperlink:visited {
-    -fx-text-fill: yellow;
-    -fx-rotate: 25;
+    -fx-font-size: 14pt;
 }
