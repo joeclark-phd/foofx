@@ -9,6 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -29,27 +30,33 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 11 - HBox and VBox");
-        stage.setWidth(400);
+        stage.setTitle("Episode 12 - BorderPanes");
+        stage.setWidth(500);
         stage.setHeight(500);
 
-        HBox root = new HBox();
+        BorderPane root = new BorderPane();
 
         Button b1 = new Button("One");
         Button b2 = new Button("Two");
         Button b3 = new Button("Three");
         Button b4 = new Button("Four");
-
-        root.setSpacing(10D); // spacing between buttons
-        root.setAlignment(Pos.BASELINE_LEFT); // where children are positioned relative to the HBox
-        root.setPadding(new Insets(10,10,10,10)); // top, right, bottom, left
-
-        HBox.setMargin(b2,new Insets(10,10,10,10)); // strange: static method of HBox sets margin for specified node
+        Button b5 = new Button("Five");
 
 
-        root.getChildren().addAll(b1,b2,b3,b4);
+        root.setCenter(b1);
+        root.setTop(b2);
+        root.setBottom(b3);
+        root.setLeft(b4);
+        root.setRight(b5);
+
+        BorderPane.setAlignment(b2,Pos.CENTER);
+        BorderPane.setAlignment(b3,Pos.CENTER);
+        BorderPane.setAlignment(b4,Pos.CENTER);
+        BorderPane.setAlignment(b5,Pos.CENTER);
+
+
+
         Scene myScene = new Scene(root);
-        myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);
         stage.show();
 
