@@ -30,30 +30,16 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 12 - BorderPanes");
+        stage.setTitle("Episode 13 - StackPanes");
         stage.setWidth(500);
         stage.setHeight(500);
 
-        BorderPane root = new BorderPane();
+        Label l1 = new Label("We hold these truths");
+        Label l2 = new Label("to be self-evident:");
 
-        Button b1 = new Button("One");
-        Button b2 = new Button("Two");
-        Button b3 = new Button("Three");
-        Button b4 = new Button("Four");
-        Button b5 = new Button("Five");
+        StackPane root = new StackPane(l1,l2); // stacks them in the z-dimension
 
-
-        root.setCenter(b1);
-        root.setTop(b2);
-        root.setBottom(b3);
-        root.setLeft(b4);
-        root.setRight(b5);
-
-        BorderPane.setAlignment(b2,Pos.CENTER);
-        BorderPane.setAlignment(b3,Pos.CENTER);
-        BorderPane.setAlignment(b4,Pos.CENTER);
-        BorderPane.setAlignment(b5,Pos.CENTER);
-
+        StackPane.setAlignment(l1,Pos.TOP_CENTER); // l1.setAlignment doesn't have this effect; you have to use StackPane.setAlignment to have effect within the STackPane
 
 
         Scene myScene = new Scene(root);
