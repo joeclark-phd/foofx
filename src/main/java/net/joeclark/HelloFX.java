@@ -5,9 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -34,17 +32,23 @@ public class HelloFX extends Application {
 
         VBox root = new VBox();
 
-        Button button1 = new Button("_Click Me");
-        button1.setMinSize(50,50);
-        button1.setPrefSize(100,100);
+        MenuItem menuItem1 = new MenuItem("Taco");
+        MenuItem menuItem2 = new MenuItem("Burrito");
+        MenuItem menuItem3 = new MenuItem("Enchilada");
+        MenuButton menuButton = new MenuButton("Mexican Food",null,menuItem1,menuItem2,menuItem3);
+        Label food = new Label("selected: ?");
 
-        //mnemonic (shortcut buttons)
-        button1.setMnemonicParsing(true);
-        button1.setOnAction(e -> {
-            System.out.println("Button was pressed. (or was it...?)");
+        menuItem1.setOnAction(e -> {
+            food.setText("selected: Taco");
+        });
+        menuItem2.setOnAction(e -> {
+            food.setText("selected: Burrito");
+        });
+        menuItem3.setOnAction(e -> {
+            food.setText("selected: Enchilada");
         });
 
-        root.getChildren().addAll(button1);
+        root.getChildren().addAll(menuButton,food);
         Scene myScene = new Scene(root);
         myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);
