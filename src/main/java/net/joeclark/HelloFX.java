@@ -26,29 +26,29 @@ public class HelloFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 8 - Buttons");
+        stage.setTitle("Episode 10 - Toggle and Radio Buttons");
         stage.setWidth(400);
         stage.setHeight(500);
 
         VBox root = new VBox();
 
-        MenuItem menuItem1 = new MenuItem("Taco");
-        MenuItem menuItem2 = new MenuItem("Burrito");
-        MenuItem menuItem3 = new MenuItem("Enchilada");
-        MenuButton menuButton = new MenuButton("Mexican Food",null,menuItem1,menuItem2,menuItem3);
-        Label food = new Label("selected: ?");
+        ToggleButton button1 = new ToggleButton("Blue");
+        ToggleButton button2 = new ToggleButton("Red");
+        ToggleButton button3 = new ToggleButton("Yellow");
+        ToggleGroup toggleGroup = new ToggleGroup();
+        button1.setToggleGroup(toggleGroup);
+        button2.setToggleGroup(toggleGroup);
+        button3.setToggleGroup(toggleGroup);
 
-        menuItem1.setOnAction(e -> {
-            food.setText("selected: Taco");
-        });
-        menuItem2.setOnAction(e -> {
-            food.setText("selected: Burrito");
-        });
-        menuItem3.setOnAction(e -> {
-            food.setText("selected: Enchilada");
-        });
+        RadioButton r1 = new RadioButton("Black");
+        RadioButton r2 = new RadioButton("White");
+        RadioButton r3 = new RadioButton("Gray");
+        r1.setToggleGroup(toggleGroup);
+        r2.setToggleGroup(toggleGroup);
+        r3.setToggleGroup(toggleGroup);
 
-        root.getChildren().addAll(menuButton,food);
+
+        root.getChildren().addAll(button1,button2,button3,r1,r2,r3);
         Scene myScene = new Scene(root);
         myScene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(myScene);
