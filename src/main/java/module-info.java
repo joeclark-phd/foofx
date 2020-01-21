@@ -4,4 +4,5 @@ module foofx {
 
     opens net.joeclark to javafx.fxml;
     exports net.joeclark;
+    exports net.joeclark.controllers;
 }

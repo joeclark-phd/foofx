@@ -10,9 +10,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/hellofx.fxml"));
-        stage.setTitle("Episode 15 - using FXML");
-        stage.setScene(new Scene(root,300,275));
+        stage.setTitle("Episode 16 - Controllers");
+
+        Parent homeRoot = FXMLLoader.load(getClass().getResource("/scenes/hellofx.fxml"));
+        Scene home = new Scene(homeRoot);
+
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("/scenes/hellologin.fxml"));
+        Scene login = new Scene(loginRoot);
+
+        stage.setScene(login);
         stage.show();
     }
 
